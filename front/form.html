@@ -4,17 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> MealFixr</title>
+    <title> African Trade</title>
     <link
       rel="shortcut icon"
       href="assets/images/favicon.png"
       type="image/x-icon"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/css/multi-select-tag.css">
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
     <link rel="stylesheet" href="assets/css/animate.css" />
     <link rel="stylesheet" href="assets/css/tailwind.css" />
-
     <!-- ==== WOW JS ==== -->
     <script src="assets/js/wow.min.js"></script>
     <script>
@@ -22,6 +24,17 @@
     </script>
   </head>
   <style>
+    .select2-selection__rendered {
+    line-height: 41px !important;
+    }
+    .select2-container .select2-selection--single {
+        height: 41px !important;
+        text-align: left !important;
+        padding-block: auto !important;
+    }
+    .select2-selection__arrow {
+        height: 41px !important;
+    }
     .loader {
       border: 16px solid #f3f3f3;
       border-radius: 50%;
@@ -255,7 +268,7 @@
               <h1
                 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]"
               >
-                Meal plan generator
+                African trade events
               </h1>
 
               <ul class="flex items-center justify-center gap-[10px]">
@@ -273,7 +286,7 @@
                     class="flex items-center gap-[10px] text-base font-medium text-body-color"
                   >
                     <span class="text-body-color dark:text-dark-6"> / </span>
-                    plan generator
+                    trade events
                   </a>
                 </li>
               </ul>
@@ -294,10 +307,22 @@
               class="wow fadeInUp relative mx-auto max-w-[800px] overflow-hidden rounded-xl shadow-form bg-white dark:bg-dark-2 py-14 px-8 text-center sm:px-12 md:px-[60px]"
               data-wow-delay=".15s"
             >
-              <div class="mb-10 text-left">
+              <div class="mb-10 " style="text-align: left;">
                 <!-- <a href="index.html" class="block text-center header-logo" style="padding: 0; margin: 0;">
                 <img src="./assets/images/logo/logod.png" class="" width="200" alt="">
                </a> -->
+               Are you a trader or buyer:
+               <div class="flex gap-4">
+                  <br>
+                  <div>
+                    <input type="radio" id="trder" name="trader_type" value="trader" onchange="setTraderVisible()" checked>
+                    <label for="html">Trader</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="trder" name="trader_type" value="buyer" onchange="setBuyerVisible()">
+                    <label for="html">Buyer</label><br>
+                  </div>
+               </div>
               </div>
 
               <div class="container text-left" id="ans-container">
@@ -309,248 +334,342 @@
               </div>
 
               <div id="container">
-                <form id="loginForm" method="post" class="grid grid-cols-2">
+                <form id="traderForm" method="post" class="grid grid-cols-2">
+
+                  <div class="mb-[22px]">
+                    <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="gender" name="gender" required>
+                        <option value="" disabled selected>Select business type</option>
+                        <option value="male">Individual</option>
+                        <option value="female">Company</option>
+                        <option value="other">Partnership</option>
+                    </select>
+                </div>
   
                   <div class="mb-[22px] ">
-                      <input placeholder="Age" type="number" 
-                      min="0" maxlength="5000" max="5000" 
+                      <input placeholder="Business name" type="text" 
                       class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="age" name="age" required>    
+                      id="name" name="name" required>    
                   </div>
-              
+                  
+                  <div class="mb-[22px] ">
+                    <input placeholder="Contact name" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="contact" name="contact" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="Address" type="text"
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="address" name="address" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="Contact name" type="text"
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="contact" name="contact" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="Postal/Zip  Code" type="text"
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="zip" name="zip" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="City" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="city" name="city" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="State/Province" type="text"
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="state" name="state" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="Country/Region" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="country" name="country" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="WhatsApp" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="whatsApp" name="whatsApp" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="Email" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="email" name="email" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input placeholder="Website" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="website" name="email" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <textarea rows="5" placeholder="Company Background/Individual Biography" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="website" name="email"></textarea>    
+                  </div>
+
                   <div class="mb-[22px]">
                       <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="gender" name="gender" required>
-                          <option value="" disabled selected>Select your Gender</option>
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                          <option value="other">Other</option>
+                      id="staff" name="staff" required>
+                          <option value="" disabled selected>Select no of staff</option>
+                          <option value="0-2">0-2</option>
+                          <option value="3-10">3-10</option>
+                          <option value="11-50">11-50</option>
+                          <option value="51-100">51-100</option>
+                          <option value="100+">100+</option>
                       </select>
                   </div>
   
                   <div class="mb-[22px]">
-                      <input placeholder="Weight" type="number" 
-                      min="0" maxlength="5000" max="5000" 
+                      <input placeholder="Year of Establishment" type="date"
                       class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="Weight" name="Weight" required>  
+                      id="year" name="year" required>  
                   </div>
           
                   <div class="mb-[22px]">
                       <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="blood_type" name="blood_type" required>
-                          <option value="" disabled selected>Select your blood type</option>
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="A/B">A/B</option>
-                          <option value="O">O</option>
+                      id="Nature_of_Business" style="height: 75%;" name="Nature_of_Business" required>
+                      <option value="" disabled selected>Select Nature of business</option>
+                      <option value="Buying Cooperative">Buying Cooperative</option>
+                      <option value="Buying Office">Buying Office</option>
+                      <option value="Chain Store">Chain Store</option>
+                      <option value="Charity / Welfare Organisation">Charity / Welfare Organisation</option>
+                      <option value="Consulate and Trade Commission">Consulate and Trade Commission</option>
+                      <option value="Department Store">Department Store</option>
+                      <option value="Distributor">Distributor</option>
+                      <option value="e-tailer">e-tailer</option>
+                      <option value="Export Agent">Export Agent</option>
+                      <option value="Exporter">Exporter</option>
+                      <option value="Government">Government</option>
+                      <option value="Import Agent">Import Agent</option>
+                      <option value="Importer">Importer</option>
+                      <option value="Mail Order Co.">Mail Order Co.</option>
+                      <option value="Manufacturer">Manufacturer</option>
+                      <option value="Private Individual">Private Individual</option>
+                      <option value="Professional Association">Professional Association</option>
+                      <option value="Religious Group">Religious Group</option>
+                      <option value="Retailer">Retailer</option>
+                      <option value="Service Company">Service Company</option>
+                      <option value="Shopping Mall">Shopping Mall</option>
+                      <option value="Statutory Body">Statutory Body</option>
+                      <option value="Trade/Industrial Organisation">Trade/Industrial Organisation</option>
+                      <option value="Wholesaler">Wholesaler</option>
+                      <option value="Others">Others</option>
                       </select>
                   </div> 
   
                   <div class="mb-[22px]">
                       <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="Allergies" name="Allergies" required>
-                          <option value="" disabled selected>Select your Allergies</option>
-                          <option value="Celery">Celery</option>
-                          <option value="Cereals containing gluten">Cereals containing gluten</option>
-                          <option value="Crustaceans">Crustaceans</option>
-                          <option value="Eggs">Eggs</option>
-                          <option value="Fish">Fish</option>
-                          <option value="Lupin">Lupin</option>
-                          <option value="Milk">Milk</option>
-                          <option value="Molluscs">Molluscs</option>
-                          <option value="Mustard">Mustard</option>
-                          <option value="Nuts">Nuts</option>
-                          <option value="Peanuts">Peanuts</option>
-                          <option value="Sesame seeds">Sesame seeds</option>
-                          <option value="Soya">Soya</option>
-                          <option value="Sulphur dioxide (sulphites)">Sulphur dioxide (sulphites)</option>
+                      id="industry" name="industry" required>
+                          <option value="" disabled selected>Select your industry</option>
+                          <option value="Accommodation and Food Service Activities">Accommodation and Food Service Activities</option>
+                          <option value="Administrative and Support Service Activities">Administrative and Support Service Activities</option>
+                          <option value="Agriculture, Forestry and Fishing">Agriculture, Forestry and Fishing</option>
+                          <option value="Arts, Entertainment and Recreation">Arts, Entertainment and Recreation</option>
+                          <option value="Construction">Construction</option>
+                          <option value="Education">Education</option>
+                          <option value="Electricity, Gas, Steam and Air Conditioning Supply">Electricity, Gas, Steam and Air Conditioning Supply</option>
+                          <option value="Financial and Insurance Activities">Financial and Insurance Activities</option>
+                          <option value="Human Health and Social Work Activities">Human Health and Social Work Activities</option>
+                          <option value="Information and Communication">Information and Communication</option>
+                          <option value="Manufacturing">Manufacturing</option>
+                          <option value="Mining and Quarrying">Mining and Quarrying</option>
+                          <option value="Other Service Activities">Other Service Activities</option>
+                          <option value="Professional, Scientific and Technical Activities">Professional, Scientific and Technical Activities</option>
+                          <option value="Real Estate Activities">Real Estate Activities</option>
+                          <option value="Transportation and Storage">Transportation and Storage</option>
+                          <option value="Water Supply; Sewerage, Waste">Water Supply; Sewerage, Waste</option>
                       </select>
                   </div> 
-                 
-                  <div class="mb-[22px]">
-                      <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="Diet" name="Diet" required>
-                          <option value="" disabled selected>Select your diet</option>
-                          <option value="Vegetarian">Vegetarian</option>
-                          <option value="Vegan">Vegan</option>
-                          <option value="Pescatarian">Pescatarian</option>
-                          <option value="Ketogenic">Ketogenic</option>
-                          <option value="Gluten-Free">Gluten-Free</option>
-                          <option value="Diary-Free">Diary-Freee</option>
-                          <option value="No Preference">No Preference</option>
-                      </select>
-                  </div> 
-                 
-                  <div class="mb-[22px]">
-                      <label class="text-left">Daily calorie consumption</label>
-                      <input placeholder="daily_calorie_consumption" type="range" 
-                      min="0" maxlength="5000" max="5000" value="1"
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="daily_calorie_consumption" name="daily_calorie_consumption" required>   
-                      <div class="flex justify-between">
-                          <span id="daily_calorie_consumptionV">0 </span>
-                          <span>5000 cal</span>
-                      </div>   
+                  <div>
+                    <button style="background-color: #3498db; color: #f3f3f3;" class=" border px-10  py-5 rounded-lg text-xl font-bold">
+                      Submit
+                    </button>
                   </div>
-  
+                </form>
+
+                <!-- buyer form -->
+                <form id="buyerForm" class="grid grid-cols-2 w-full">
                   <div class="mb-[22px]">
-                      <label class="float-left">Daily calorie limit</label>
-                      <input placeholder="daily_calorie_limit" type="range" 
-                      min="0" maxlength="5000" max="5000" value="1"
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="daily_calorie_limit" name="daily_calorie_limit" required>  
-                      <div class="flex justify-between">
-                          <span id="daily_calorie_limitV">0 cal</span>
-                          <span>5000 cal</span>
-                      </div>   
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <label class="float-left">Meal salt limit</label>
-                      <input placeholder="meal_salt_limit" type="range" 
-                      min="0" maxlength="600" max="600" value="1"
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="meal_salt_limit" name="meal_salt_limit" required>  
-                      <div class="flex justify-between">
-                          <span id="meal_salt_limitV">0 mg</span>
-                          <span>600 mg</span>
-                      </div>   
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <label class="float-left">Meal sugar limit</label>
-                      <input placeholder="meal_sugar_limit" type="range" 
-                      min="0" maxlength="600" max="600" value="1"
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="meal_sugar_limit" name="meal_sugar_limit" required>   
-                      <div class="flex justify-between">
-                          <span id="meal_sugar_limitV">0 mg</span>
-                          <span>600 mg</span>
-                      </div>   
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <label class="float-left">Spice tolerance</label>
-                      <input placeholder="spice_tolerance" type="range" 
-                      min="0" maxlength="10" max="10" value="1"
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="spice_tolerance" name="spice_tolerance" required> 
-                      <div class="flex justify-between">
-                          <span>Very Mild</span>
-                          <span>Extremely hot</span>
-                      </div>     
-                  </div>
-                 
-  
-                  <div class="mb-[22px]">
-                      <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="cuisine_influence" name="cuisine_influence" required>
-                          <option value="" disabled selected>Select your cuisine influence</option>
-                          <option value="Indian">Indian</option>
-                          <option value="Chinese">Chinese</option>
-                          <option value="Western European">Western European</option>
-                          <option value="Eastern European">Eastern European</option>
-                          <option value="North American">North American</option>
-                          <option value="Latin American">Latin American</option>
-                          <option value="Caribbean">Caribbean</option>
-                          <option value="Japanese">Japanese</option>
-                          <option value="Mediterranean">Mediterranean</option>
-                          <option value="Arabic">Arabic</option>
-                          <option value="Thai">Thai</option>
-                          <option value="Singaporean">Singaporean</option>
-                          <option value="West African">West African</option>
-                          <option value="East African">East African</option>
-                      </select>
-                  </div>
-                 
-                  <div class="mb-[22px]">
-                      <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="food_preferences" name="food_preferences" multiple >
-                          <option value="" disabled selected>Select your food preferences</option>
-                          <option value="Lean proteins">Lean proteins</option>
-                          <option value="Complex carbohydrates">Complex carbohydrates</option>
-                          <option value="Healthy fats">Healthy fats</option>
-                          <option value="Dairy and alternatives">Dairy and alternatives</option>
-                          <option value="Simple carbohydrates">Simple carbohydrates</option>
-                          <option value="Green vegetables">Green vegetables</option>
-                          <option value="Legumes and beans">Legumes and beans</option>
-                          <option value="Whole foods">Whole foods</option>
-                          <option value="Balanced micronutrients">Balanced micronutrients</option>
-                          <option value="High fibre foods">High fibre foods</option>
-                          <option value="High protein foods">High protein foods</option>
-                      </select>
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <input placeholder="Meals per day" type="number" 
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="meals_per_day" name="meals_per_day" required>    
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="health_goals" name="health_goals" required>
-                          <option value="" disabled selected>Select your health goal</option>
-                          <option value="Weight loss">Weight loss</option>
-                          <option value="Weight gain">Weight gain</option>
-                          <option value="Maintain weight">Maintain weight</option>
-                          <option value="Muscle building">Muscle building</option>
-                          <option value="General fitness">General fitness</option>
-                      </select>
-                  </div> 
-  
-                  <div class="mb-[22px]">
-                    <label class="float-left">Activity level</label>
-                      <input placeholder="activity_levels" type="range" 
-                      min="0" max="10" value="1"
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="activity_levels" name="activity_levels" required>  
-                      <div class="flex justify-between">
-                        <span id="activity_levelsV" >Very Mild</span>
-                        <span>Extremely hot</span>
-                    </div>    
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="type_of_activity" name="type_of_activity" required>
-                          <option value="" disabled selected>Select your activity type</option>
-                          <option value="Flexibility ">Flexibility </option>
-                          <option value="Aerobic">Aerobic </option>
-                          <option value="Muscle Strengthening ">Muscle Strengthening </option>
-                      </select>
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <input placeholder="activity_levels" type="number" 
-                      min="0" max="10"
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="activity_levels" name="activity_levels" required>    
-                  </div>
-  
-                  <div class="mb-[22px]">
-                      <input placeholder="daily_workout_time" type="number" 
-                      min="0" max="10" 
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="daily_workout_time" name="daily_workout_time" required>    
-                  </div>
-                  
-                  <div class="mb-[22px]">
-                      <input placeholder="weekly workout quantity" type="number" 
-                      min="0" max="10" 
-                      class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="weekly_workout_quantity" name="weekly_workout_quantity" required>    
-                  </div>
-  
-                  <br>
-                  <button 
-                  class="border w-2/5 mx-7 bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded border-spacing-1 mb-2"
-                  type="button" id="check">Submit</button>
-                  <br>
-  
-                  <span id="response"></span>
-                  <div class="flex justify-center items-center">
-                      <div id="loader" class="loader" style="margin: 10px 0"></div>
+                    <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="Interested_Products" style="width: 100%;" name="Nature_of_Business" required>
+                      <option value="" disabled selected>Select Interested Products</option>
+                      <option value="Live animals">Live animals</option>
+                      <option value="Meat and edible meat offal">Meat and edible meat offal</option>
+                      <option value="Fish and crustaceans, molluscs and other aquatic invertebrates">Fish and crustaceans, molluscs and other aquatic invertebrates</option>
+                      <option value="Dairy produce; birds' eggs; natural honey; edible products of animal origin">Dairy produce; birds' eggs; natural honey; edible products of animal origin</option>
+                      <option value="Products of animal origin not elsewhere specified or included">Products of animal origin not elsewhere specified or included</option>
+                      <option value="Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage">Live trees and other plants; bulbs, roots and the like; cut flowers and ornamental foliage</option>
+                      <option value="Edible vegetables and certain roots and tubers">Edible vegetables and certain roots and tubers</option>
+                      <option value="Edible fruit and nuts; peel of citrus fruits or melons">Edible fruit and nuts; peel of citrus fruits or melons</option>
+                      <option value="Coffee, tea, mate and spices">Coffee, tea, mate and spices</option>
+                      <option value="Cereals">Cereals</option>
+                      <option value="Products of the milling industry; malt; starches; inulin; wheat gluten">Products of the milling industry; malt; starches; inulin; wheat gluten</option>
+                      <option value="Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medical plants; straw and fodder">Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit; industrial or medical plants; straw and fodder</option>
+                      <option value="Lacs; gums, resins and other vegetable saps and extracts">Lacs; gums, resins and other vegetable saps and extracts</option>
+                      <option value="Vegetable plaiting materials; vegetable products not elsewhere specified or included">Vegetable plaiting materials; vegetable products not elsewhere specified or included</option>
+                      <option value="Animal or vegetable fats and oils and their cleavage products; prepared edible fats; animal or vegetable waxes">Animal or vegetable fats and oils and their cleavage products; prepared edible fats; animal or vegetable waxes</option>
+                      <option value="Preparations of meat, fish or crustaceans, molluscs or other aquatic invertebrates">Preparations of meat, fish or crustaceans, molluscs or other aquatic invertebrates</option>
+                      <option value="Sugars and sugar confectionery">Sugars and sugar confectionery</option>
+                      <option value="Cocoa and cocoa preparations">Cocoa and cocoa preparations</option>
+                      <option value="Preparations of cereals, flour, starch or milk; pastrycooks' products">Preparations of cereals, flour, starch or milk; pastrycooks' products</option>
+                      <option value="Preparations of vegetables, fruit, nuts or other parts of plants">Preparations of vegetables, fruit, nuts or other parts of plants</option>
+                      <option value="Beverages, spirits and vinegar">Beverages, spirits and vinegar</option>
+                      <option value="Residues and waste from the food industries; prepared animal fodder">Residues and waste from the food industries; prepared animal fodder</option>
+                      <option value="Tobacco and manufactured tobacco substitutes">Tobacco and manufactured tobacco substitutes</option>
+                      <option value="Miscellaneous edible preparations">Miscellaneous edible preparations</option>
+                      <option value="Beverages, spirits and vinegar">Beverages, spirits and vinegar</option>
+                      <option value="Residues and waste from the food industries; prepared animal fodder">Residues and waste from the food industries; prepared animal fodder</option>
+                      <option value="Tobacco and manufactured tobacco substitutes">Tobacco and manufactured tobacco substitutes</option>
+                      <option value="Salt; sulphur; earths and stone; plastering material, lime and cement">Salt; sulphur; earths and stone; plastering material, lime and cement</option>
+                      <option value="Ores, slag and ash">Ores, slag and ash</option>
+                      <option value="Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes">Mineral fuels, mineral oils and products of their distillation; bituminous substances; mineral waxes</option>
+                      <option value="Inorganic chemicals: organic or inorganic compounds of precious metals, of rare">Inorganic chemicals: organic or inorganic compounds of precious metals, of rare</option>
+                      <option value="Organic chemicals">Organic chemicals</option>
+                      <option value="Pharmaceutical products">Pharmaceutical products</option>
+                      <option value="Fertilisers">Fertilisers</option>
+                      <option value="Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints and varnishes; putty and other mastics; inks">Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments and other colouring matter; paints and varnishes; putty and other mastics; inks</option>
+                      <option value="Essential oils and resinoids; perfumery, cosmetic or toilet preparations">Essential oils and resinoids; perfumery, cosmetic or toilet preparations</option>
+                      <option value="Soaps, organic surface-active agents, washing preprations, lubricating preparations, artificial waxes, prepared waxes, shoe polish, scouring powder and the like, candles and similar products">Soaps, organic surface-active agents, washing preprations, lubricating preparations, artificial waxes, prepared waxes, shoe polish, scouring powder and the like, candles and similar products</option>
+                      <option value="Albuminous substances; modified starches; glues; enzymes">Albuminous substances; modified starches; glues; enzymes</option>
+                      <option value="Explosives; pyrotechnic products; matches; pyrophoric alloys; combustible materials">Explosives; pyrotechnic products; matches; pyrophoric alloys; combustible materials</option>
+                      <option value="Photographic or cinematographic products">Photographic or cinematographic products</option>
+                      <option value="Miscellaneous chemical products">Miscellaneous chemical products</option>
+                      <option value="Plastics and plastic products">Plastics and plastic products</option>
+                      <option value="Rubber and rubber articles">Rubber and rubber articles</option>
+                      <option value="Hides and skins (other than furskins) and leather">Hides and skins (other than furskins) and leather</option>
+                      <option value="Articles of leather; saddlery and harness">Articles of leather; saddlery and harness</option>
+                      <option value="Furskins and artificial fur">Furskins and artificial fur</option>
+                      <option value="Wood and articles of wood; wood charcoal">Wood and articles of wood; wood charcoal</option>
+                      <option value="Cork and articles of cork">Cork and articles of cork</option>
+                      <option value="Wickerwork and basketwork">Wickerwork and basketwork</option>
+                      <option value="Pulp of wood or of other fibrous cellulosic material; waste and scrap of paper or paperboard">Pulp of wood or of other fibrous cellulosic material; waste and scrap of paper or paperboard</option>
+                      <option value="Paper and paperboard; articles of paper pulp, paper or paperboard">Paper and paperboard; articles of paper pulp, paper or paperboard</option>
+                      <option value="Books, newspapers, pictures and other products of the printing industry; manuscripts, typescripts and plans">Books, newspapers, pictures and other products of the printing industry; manuscripts, typescripts and plans</option>
+                      <option value="Silk">Silk</option>
+                      <option value="Wool, fine and coarse animal hair; yarn and fabrics of horsehair">Wool, fine and coarse animal hair; yarn and fabrics of horsehair</option>
+                      <option value="Cotton">Cotton</option>
+                      <option value="Other vegetable textile fibres; paper yarn and woven fabrics of paper yarn">Other vegetable textile fibres; paper yarn and woven fabrics of paper yarn</option>
+                      <option value="Man-made filaments">Man-made filaments</option>
+                      <option value="Man-made staple fibres">Man-made staple fibres</option>
+                      <option value="Wadding, felt and nonwovens; special yarns; twine, cordage, rope and cable">Wadding, felt and nonwovens; special yarns; twine, cordage, rope and cable</option>
+                      <option value="Carpets and other textile floor coverings">Carpets and other textile floor coverings</option>
+                      <option value="Special woven fabrics; tufted textile products; lace; tapestries; trimmings; embroidery">Special woven fabrics; tufted textile products; lace; tapestries; trimmings; embroidery</option>
+                      <option value="Impregnated, coated, covered or laminated textile fabrics; articles for technical use, of textile materials">Impregnated, coated, covered or laminated textile fabrics; articles for technical use, of textile materials</option>
+                      <option value="Knitted or crocheted fabrics">Knitted or crocheted fabrics</option>
+                      <option value="Articles of apparel and clothing accessories, knitted or crocheted">Articles of apparel and clothing accessories, knitted or crocheted</option>
+                      <option value="Articles of apparel and clothing accessories, not knitted or crocheted">Articles of apparel and clothing accessories, not knitted or crocheted</option>
+                      <option value="Other made up textile articles; sets; worn clothing and worn">Other made up textile articles; sets; worn clothing and worn</option>
+                      <option value="Footwear, gaiters and the like; parts of such articles">Footwear, gaiters and the like; parts of such articles</option>
+                      <option value="Headgear">Headgear</option>
+                      <option value="Umbrellas, sun umbrellas, walking-sticks, seat-sticks, whips, riding-crops and parts">Umbrellas, sun umbrellas, walking-sticks, seat-sticks, whips, riding-crops and parts</option>
+                      <option value="Prepared feathers and down and articles made of feathers or of down; artificial flowers; articles of human hair">Prepared feathers and down and articles made of feathers or of down; artificial flowers; articles of human hair</option>
+                      <option value="Articles of stone, plaster, cement, asbestos">Articles of stone, plaster, cement, asbestos</option>
+                      <option value="Ceramic products">Ceramic products</option>
+                      <option value="Glass and glassware">Glass and glassware</option>
+                      <option value="Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal; imitation jewellery; coin">Natural or cultured pearls, precious or semi-precious stones, precious metals, metals clad with precious metal; imitation jewellery; coin</option>
+                      <option value="Iron and steel articles">Iron and steel articles</option>
+                      <option value="Copper and copper articles">Copper and copper articles</option>
+                      <option value="Nickel and nickel articles">Nickel and nickel articles</option>
+                      <option value="Aluminium and aluminium articles">Aluminium and aluminium articles</option>
+                      <option value="Lead and lead articles">Lead and lead articles</option>
+                      <option value="Zinc and zinc articles">Zinc and zinc articles</option>
+                      <option value="Tin and tin articles">Tin and tin articles</option>
+                      <option value="Tools, implements, cutlery, spoons and forks, of base metal">Tools, implements, cutlery, spoons and forks, of base metal</option>
+                      <option value="Miscellaneous articles of base metal">Miscellaneous articles of base metal</option>
+                      <option value="Nuclear reactors, boilers, machinery and mechanical appliances; electrical machinery and equipment; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles">Nuclear reactors, boilers, machinery and mechanical appliances; electrical machinery and equipment; sound recorders and reproducers, television image and sound recorders and reproducers, and parts and accessories of such articles</option>
+                      <option value="Railway or tramway locomotives, rolling-stock; railway or tramway track fixtures and fittings; mechanical, including electro-mechanical, traffic signalling equipment of all kinds">Railway or tramway locomotives, rolling-stock; railway or tramway track fixtures and fittings; mechanical, including electro-mechanical, traffic signalling equipment of all kinds</option>
+                      <option value="Vehicles other than railway or tramway rolling-stock">Vehicles other than railway or tramway rolling-stock</option>
+                      <option value="Aircraft, spacecraft, and their parts">Aircraft, spacecraft, and their parts</option>
+                      <option value="Ships, boats and floating structures">Ships, boats and floating structures</option>
+                      <option value="Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories">Optical, photographic, cinematographic, measuring, checking, precision, medical or surgical instruments and apparatus; parts and accessories</option>
+                      <option value="Clocks and watches and parts">Clocks and watches and parts</option>
+                      <option value="Musical instruments; parts and accessories for such">Musical instruments; parts and accessories for such</option>
+                      <option value="Arms and ammunition; parts and accessories">Arms and ammunition; parts and accessories</option>
+                      <option value="Furniture; medical and surgical furniture; bedding, mattresses, mattress supports, cushions and similar stuffed furnishings; lamps and lighting fittings, not elsewhere specified; illuminated signs, illuminated name-plates and the like;">Furniture; medical and surgical furniture; bedding, mattresses, mattress supports, cushions and similar stuffed furnishings; lamps and lighting fittings, not elsewhere specified; illuminated signs, illuminated name-plates and the like;</option>
+                      <option value="Toys, games and sports requisites; parts and accessories">Toys, games and sports requisites; parts and accessories</option>
+                      <option value="Miscellaneous manufactured articles">Miscellaneous manufactured articles</option>
+                      <option value="Works of art, collectors' pieces and antiques">Works of art, collectors' pieces and antiques</option>
+                      <option value="Industrial Plant component parts">Industrial Plant component parts</option>
+                    </select>
+                </div> 
+
+                <div class="mb-[22px]">
+                  <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                  id="Interested_Country" style="width: 100%;" name="Interested_Country" required>
+                        <option value="" disabled selected>Select Interested interested country</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Benin">Benin</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Cabo Verde">Cabo Verde</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Central African Republic (CAR)">Central African Republic (CAR)</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option>
+                        <option value="Congo, Republic of the">Congo, Republic of the</option>
+                        <option value="Côte d’Ivoire">Côte d’Ivoire</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Eswatini">Eswatini</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Gambia">Gambia</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Guinea">Guinea</option>
+                        <option value="Guinea-Bissau">Guinea-Bissau</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Liberia">Liberia</option>
+                        <option value="Libya">Libya</option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Mauritania">Mauritania</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Sierra Leone">Sierra Leone</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="South Sudan">South Sudan</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Tanzania">Tanzania</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                  </select>
+                </div>
+
+                  <div>
+                    <button style="background-color: #3498db; color: #f3f3f3;" class=" border px-10  py-5 rounded-lg text-xl font-bold">
+                      Submit
+                    </button>
                   </div>
                 </form>
               </div>
@@ -1334,8 +1453,50 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-      const url = 'https://mealfixer-scao.onrender.com';
-      document.getElementById("ans-container").hidden = true
+      // document.getElementById("ans-container").hidden = true
+
+      function setBuyerVisible(){
+        document.getElementById("buyerForm").style.display = "block"
+        document.getElementById("traderForm").style.display = "none"
+      }
+
+      function setTraderVisible(){
+        document.getElementById("buyerForm").style.display = "none"
+        document.getElementById("traderForm").style.display = "block"
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("ans-container").hidden = true
+        document.getElementById("buyerForm").style.display = "none"
+        document.getElementById("traderForm").style.display = "block"
+      });
+
+      $("#Interested_Products").select2({
+        width: 'resolve' // need to override the changed default
+      });
+      
+      $("#Interested_Country").select2({
+        width: 'resolve' // need to override the changed default
+      });
+
+      $(document).ready(function() {
+        $('#Nature_of_Business').select2();
+      });
+      
+      $(document).ready(function() {
+        $('#industry').select2();
+      });
+      
+      $(document).ready(function() {
+        $('#Interested_Products').select2();
+      });
+
+      $(document).ready(function() {
+        $('#Interested_Country').select2();
+      });
+
+
+      const url = 'http://localhost:4000';
       const setupRangeInput = (inputId, outputId, ty) => {
       const
         range = document.getElementById(inputId),
