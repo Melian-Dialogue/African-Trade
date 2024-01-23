@@ -17,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
     <link rel="stylesheet" href="assets/css/animate.css" />
     <link rel="stylesheet" href="assets/css/tailwind.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <!-- ==== WOW JS ==== -->
     <script src="assets/js/wow.min.js"></script>
     <script>
@@ -312,7 +313,7 @@
                 <img src="./assets/images/logo/logod.png" class="" width="200" alt="">
                </a> -->
                Are you a trader or buyer:
-               <div class="flex gap-4">
+               <div id="my-trade" class="flex gap-4">
                   <br>
                   <div>
                     <input type="radio" id="trder" name="trader_type" value="trader" onchange="setTraderVisible()" checked>
@@ -326,7 +327,10 @@
               </div>
 
               <div class="container text-left" id="ans-container">
-                <button class="container text-blue-600 underline" onclick="back()"><a href="#" style="color: #3498db;">back</a></button>
+                <button class="mb-3 container flex text-blue-600 underline" onclick="back()">
+                  <a href="#" class="flex" style="color: #3498db;">
+                    <span class="material-symbols-outlined">arrow_back</span> back </a>
+                </button>
                 <div>
                   <div style="white-space: pre-wrap;" class="flex flex-wrap  border p-4" id="ans">
                   </div>
@@ -334,11 +338,11 @@
               </div>
 
               <div id="container">
-                <form id="traderForm" method="post" class="grid grid-cols-2">
+                <form onsubmit="submitionSeller(); return false; " id="traderForm" class="grid grid-cols-2">
 
                   <div class="mb-[22px]">
                     <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="gender" name="gender" required>
+                    id="type_of_business"  name="type_of_business" required>
                         <option value="" disabled selected>Select business type</option>
                         <option value="male">Individual</option>
                         <option value="female">Company</option>
@@ -347,80 +351,86 @@
                 </div>
   
                   <div class="mb-[22px] ">
-                      <input placeholder="Business name" type="text" 
+                      <input required placeholder="Business name" type="text" 
                       class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="name" name="name" required>    
+                      id="name_of_business" name="name_of_business" required>    
                   </div>
                   
                   <div class="mb-[22px] ">
-                    <input placeholder="Contact name" type="text" 
+                    <input required placeholder="Contact name" type="text" 
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="contact" name="contact" required>    
+                    id="name_of_contact" name="name_of_contact" required>    
                   </div>
 
                   <div class="mb-[22px] ">
-                    <input placeholder="Address" type="text"
+                    <input required placeholder="Address" type="text"
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
                     id="address" name="address" required>    
                   </div>
 
-                  <div class="mb-[22px] ">
+                  <!-- <div class="mb-[22px] ">
                     <input placeholder="Contact name" type="text"
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
                     id="contact" name="contact" required>    
-                  </div>
+                  </div> -->
 
                   <div class="mb-[22px] ">
-                    <input placeholder="Postal/Zip  Code" type="text"
+                    <input required placeholder="Postal/Zip  Code" type="text"
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="zip" name="zip" required>    
+                    id="postal_code" name="postal_code" required>    
                   </div>
 
                   <div class="mb-[22px] ">
-                    <input placeholder="City" type="text" 
+                    <input required placeholder="City" type="text" 
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
                     id="city" name="city" required>    
                   </div>
 
                   <div class="mb-[22px] ">
-                    <input placeholder="State/Province" type="text"
+                    <input required placeholder="State/Province" type="text"
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="state" name="state" required>    
+                    id="state_province" name="state_province" required>    
                   </div>
 
                   <div class="mb-[22px] ">
-                    <input placeholder="Country/Region" type="text" 
+                    <input required placeholder="Country/Region" type="text" 
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="country" name="country" required>    
+                    id="country_region" name="country_region" required>    
                   </div>
 
                   <div class="mb-[22px] ">
-                    <input placeholder="WhatsApp" type="text" 
+                    <input required placeholder="Telephone" type="text" 
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="whatsApp" name="whatsApp" required>    
+                    id="telephone" name="telephone" required>    
                   </div>
 
                   <div class="mb-[22px] ">
-                    <input placeholder="Email" type="text" 
+                    <input required placeholder="WhatsApp" type="text" 
+                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                    id="whatsapp" name="whatsapp" required>    
+                  </div>
+
+                  <div class="mb-[22px] ">
+                    <input required placeholder="Email" type="text" 
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
                     id="email" name="email" required>    
                   </div>
 
                   <div class="mb-[22px] ">
-                    <input placeholder="Website" type="text" 
+                    <input required placeholder="Website" type="text" 
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="website" name="email" required>    
+                    id="website" name="website" required>    
                   </div>
 
                   <div class="mb-[22px] ">
                     <textarea rows="5" placeholder="Company Background/Individual Biography" type="text" 
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="website" name="email"></textarea>    
+                    id="background" name="background"></textarea>    
                   </div>
 
                   <div class="mb-[22px]">
-                      <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="staff" name="staff" required>
+                      <select required class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                      id="no_of_staff" name="no_of_staff" required>
                           <option value="" disabled selected>Select no of staff</option>
                           <option value="0-2">0-2</option>
                           <option value="3-10">3-10</option>
@@ -431,14 +441,14 @@
                   </div>
   
                   <div class="mb-[22px]">
-                      <input placeholder="Year of Establishment" type="date"
+                      <input required placeholder="Year of Establishment" type="number"
                       class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="year" name="year" required>  
+                      id="year_of_establishment" name="year_of_establishment" required>  
                   </div>
           
                   <div class="mb-[22px]">
                       <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                      id="Nature_of_Business" style="height: 75%;" name="Nature_of_Business" required>
+                      id="nature_of_business" style="height: 75%;" name="nature_of_business" required>
                       <option value="" disabled selected>Select Nature of business</option>
                       <option value="Buying Cooperative">Buying Cooperative</option>
                       <option value="Buying Office">Buying Office</option>
@@ -491,18 +501,20 @@
                           <option value="Water Supply; Sewerage, Waste">Water Supply; Sewerage, Waste</option>
                       </select>
                   </div> 
+
+                  <p id="response"></p>
                   <div>
-                    <button style="background-color: #3498db; color: #f3f3f3;" class=" border px-10  py-5 rounded-lg text-xl font-bold">
+                    <button id="traderFormButton" style="background-color: #3498db; color: #f3f3f3;" class=" border px-10  py-5 rounded-lg text-xl font-bold">
                       Submit
                     </button>
                   </div>
                 </form>
 
                 <!-- buyer form -->
-                <form id="buyerForm" class="grid grid-cols-2 w-full">
+                <form onsubmit="submitionBuyer(); return false;" id="buyerForm" class="grid grid-cols-2 w-full">
                   <div class="mb-[22px]">
                     <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="Interested_Products" style="width: 100%;" name="Nature_of_Business" required>
+                    id="interested_product" style="width: 100%;" name="Nature_of_Business" required>
                       <option value="" disabled selected>Select Interested Products</option>
                       <option value="Live animals">Live animals</option>
                       <option value="Meat and edible meat offal">Meat and edible meat offal</option>
@@ -606,7 +618,7 @@
 
                 <div class="mb-[22px]">
                   <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                  id="Interested_Country" style="width: 100%;" name="Interested_Country" required>
+                  id="interested_country" style="width: 100%;" name="Interested_Country" required>
                         <option value="" disabled selected>Select Interested interested country</option>
                         <option value="Algeria">Algeria</option>
                         <option value="Angola">Angola</option>
@@ -665,13 +677,16 @@
                         <option value="Zimbabwe">Zimbabwe</option>
                   </select>
                 </div>
-
+                <p id="response"></p>
                   <div>
-                    <button style="background-color: #3498db; color: #f3f3f3;" class=" border px-10  py-5 rounded-lg text-xl font-bold">
+                    <button  id="buyerFormButton" style="background-color: #3498db; color: #f3f3f3;" class=" border px-10  py-5 rounded-lg text-xl font-bold">
                       Submit
                     </button>
                   </div>
                 </form>
+                <div class="flex justify-center items-center">
+                  <div id="loader" class="loader" style="margin: 10px 0"></div>
+                </div>
               </div>
           
               <!-- <p class="mb-4 text-base text-body-secondary">
@@ -1453,22 +1468,58 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
+      // init
+
+      const url = 'http://localhost:4000';
+    //   const
+    //     range = document.getElementById(inputId),
+    //     rangeV = document.getElementById(outputId),
+    //     setValue = () => {
+    //       const
+    //         newValue = Number((range.value - range.min) * 100 / (range.max - range.min)),
+    //         newPosition = 10 - (newValue * 0.2);
+    //       rangeV.innerHTML = `<span>${range.value} ${ty}</span>`;
+    //       rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+    //     };
+
+    //   document.addEventListener("DOMContentLoaded", setValue);
+    //   range.addEventListener('input', setValue);
+    // };
+
+    // setupRangeInput('daily_calorie_consumption', 'daily_calorie_consumptionV', 'cal');
+    // setupRangeInput('daily_calorie_limit', 'daily_calorie_limitV', 'cal');
+    // setupRangeInput('meal_salt_limit', 'meal_salt_limitV', 'mg');
+    // setupRangeInput('meal_sugar_limit', 'meal_sugar_limitV', 'mg');
+    // setupRangeInput('activity_levels', 'activity_levelsV', 'mild_level');
+
+
+      // end scroll
+      const loader = document.getElementById("loader");
+      const response = document.getElementById("response");
+      let foods = []
+
       // document.getElementById("ans-container").hidden = true
 
       function setBuyerVisible(){
         document.getElementById("buyerForm").style.display = "block"
         document.getElementById("traderForm").style.display = "none"
+        document.getElementById("container").hidden = false;
+        document.getElementById("ans-container").hidden = true;
+        
       }
 
       function setTraderVisible(){
         document.getElementById("buyerForm").style.display = "none"
         document.getElementById("traderForm").style.display = "block"
+        document.getElementById("container").hidden = false;
+        document.getElementById("ans-container").hidden = true;
       }
 
       document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("ans-container").hidden = true
         document.getElementById("buyerForm").style.display = "none"
         document.getElementById("traderForm").style.display = "block"
+        
       });
 
       $("#Interested_Products").select2({
@@ -1496,112 +1547,76 @@
       });
 
 
-      const url = 'http://localhost:4000';
-      const setupRangeInput = (inputId, outputId, ty) => {
-      const
-        range = document.getElementById(inputId),
-        rangeV = document.getElementById(outputId),
-        setValue = () => {
-          const
-            newValue = Number((range.value - range.min) * 100 / (range.max - range.min)),
-            newPosition = 10 - (newValue * 0.2);
-          rangeV.innerHTML = `<span>${range.value} ${ty}</span>`;
-          rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
-        };
-
-      document.addEventListener("DOMContentLoaded", setValue);
-      range.addEventListener('input', setValue);
-    };
-
-    setupRangeInput('daily_calorie_consumption', 'daily_calorie_consumptionV', 'cal');
-    setupRangeInput('daily_calorie_limit', 'daily_calorie_limitV', 'cal');
-    setupRangeInput('meal_salt_limit', 'meal_salt_limitV', 'mg');
-    setupRangeInput('meal_sugar_limit', 'meal_sugar_limitV', 'mg');
-    setupRangeInput('activity_levels', 'activity_levelsV', 'mild_level');
-
-
-      // end scroll
-      const loader = document.getElementById("loader");
-      const response = document.getElementById("response");
-      let foods = []
-
-      new MultiSelectTag('food_preferences', {
-              rounded: true,    // default true
-              shadow: true,      // default false
-              placeholder: 'Search',  // default Search...
-              tagColor: {
-                  textColor: '#327b2c',
-                  borderColor: '#92e681',
-                  bgColor: '#eaffe6',
-              },
-              onChange: function(values) {
-                 foods = values;
-              }
-          })
+      // new MultiSelectTag('food_preferences', {
+      //         rounded: true,    // default true
+      //         shadow: true,      // default false
+      //         placeholder: 'Search',  // default Search...
+      //         tagColor: {
+      //             textColor: '#327b2c',
+      //             borderColor: '#92e681',
+      //             bgColor: '#eaffe6',
+      //         },
+      //         onChange: function(values) {
+      //            foods = values;
+      //         }
+      //     })
 
 
 
-      loader.style.display = "none";
+    loader.style.display = "none";
 
     function back() {
         document.getElementById("container").hidden = false
         document.getElementById("ans-container").hidden = true
     }
 
-      document
-        .getElementById("check")
-        .addEventListener("click", async function (event) {
-            
+    async function submitionSeller(){
+             
           event.preventDefault(); // Prevents the default form submission
           loader.style.display = "block";
 
           // Get values from the form
-          const username = document.getElementById("username");
+          // const username = document.getElementById("username");
+          // const email = document.getElementById("email");
+
+          const type_of_business = document.getElementById("type_of_business"); 
+          const name_of_business = document.getElementById("name_of_business");
+          const name_of_contact = document.getElementById("name_of_contact");
+          const address = document.getElementById("address");
+          const postal_code = document.getElementById("postal_code");
+          const city = document.getElementById("city");
+          const state_province = document.getElementById("state_province");
+          const country_region = document.getElementById("country_region");
+          const telephone = document.getElementById("telephone");
+          const whatsapp = document.getElementById("whatsapp");
           const email = document.getElementById("email");
-
-          const age = document.getElementById("age"); 
-          const gender = document.getElementById("gender");
-          const weight = document.getElementById("Weight");
-          const blood_type = document.getElementById("blood_type");
-          const allergies = document.getElementById("Allergies");
-          const diet = document.getElementById("Diet");
-          const daily_calorie_consumption = document.getElementById("daily_calorie_consumption");
-          const daily_calorie_limit = document.getElementById("daily_calorie_limit");
-          const meal_salt_limit = document.getElementById("meal_salt_limit");
-          const meal_sugar_limit = document.getElementById("meal_sugar_limit");
-          const spice_tolerance = document.getElementById("spice_tolerance");
-          const cuisine_influence = document.getElementById("cuisine_influence");
-          // const food_preferences = document.getElementById("food_preferences");
-          const meals_per_day = document.getElementById("meals_per_day");
-          const health_goals = document.getElementById("health_goals");
-          const activity_levels = document.getElementById("activity_levels");
-          const type_of_activity = document.getElementById("type_of_activity");
-          const daily_workout_time = document.getElementById("daily_workout_time");
-          const weekly_workout_quantity = document.getElementById("weekly_workout_quantity");
-
+          const website = document.getElementById("website");
+          const background = document.getElementById("background");
+          const no_of_staff = document.getElementById("no_of_staff");
+          const year_of_establishment = document.getElementById("year_of_establishment");
+          const nature_of_business = document.getElementById("nature_of_business");
+          const industry = document.getElementById("industry");
+  
       
           // Construct the data to be sent
           const formData = {
-            // username: username.value,
-            age: parseInt(age.value),  
-            gender: gender.value,   
-            weight: parseInt(weight.value) ,  
-            blood_type: blood_type.value,   
-            allergies: allergies.value,   
-            diet: diet.value,   
-            daily_calorie_consumption: parseInt(daily_calorie_consumption.value),  
-            daily_calorie_limit: parseInt(daily_calorie_limit.value),   
-            meal_salt_limit: parseInt(meal_salt_limit.value),   
-            meal_sugar_limit: parseInt(meal_sugar_limit.value),   
-            spice_tolerance: spice_tolerance.value,   
-            cuisine_influence: cuisine_influence.value,  
-            food_preferences: foods,   
-            meals_per_day: parseInt(meals_per_day.value),   
-            health_goals: health_goals.value,   
-            activity_levels: parseInt(activity_levels.value),  
-            type_of_activity: type_of_activity.value,   
-            daily_workout_time: parseInt(daily_workout_time.value),   
-            weekly_workout_quantity: parseInt(weekly_workout_quantity.value), 
+            type_of_business : type_of_business.value,
+            name_of_business : name_of_business.value,
+            name_of_contact : name_of_contact.value,
+            address : address.value,
+            postal_code : postal_code.value,
+            city : city.value,
+            state_province : state_province.value,
+            country_region : country_region.value,
+            telephone : telephone.value,
+            whatsapp : whatsapp.value,
+            email : email.value,
+            website : website.value,
+            background : background.value,
+            no_of_staff : parseInt(no_of_staff.value),
+            year_of_establishment : parseInt(year_of_establishment.value),
+            nature_of_business : nature_of_business.value,
+            industry : industry.value
           };
 
           
@@ -1632,16 +1647,113 @@
             );
 
             let p = userDetails.data
-            if(p.user.requests > 0){
+            if(/*p.user.requests > 0*/true){
                 const res = await axios.post(
-                `https://kevkibe-mealfixr.onrender.com/generate_mealplan`,
+                `https://datapopulation.onrender.com/data-population`,
+                formData,
+              );
+
+              // document.getElementById("ans-container").hidden = false;
+              // response.style.color = "green";
+              // response.style.margin = "10px 0";
+              // response.textContent = "Successfully signed up! Please check your inbox for further Instructions";
+              loader.style.display = "none";
+              // Handle the response from the server if needed
+              // window.location.href = "https://headhuntrs.co.uk/signin.html";
+
+              //reduce request count
+              let userData = localStorage.getItem('userInfo')
+              userData = JSON.parse(userData);
+              const requestCount = await axios.get(
+                `${url}/update-requests`,
+                {
+                  headers: {
+                    'Authorization': 'Bearer ' + userData.token
+                  } 
+                }
+              );
+
+              // document.getElementById("container").hidden = true
+              // document.getElementById("ans").innerHTML = res.data.meal_plan.trim()
+              responseFromApi = res.data.meal_plan;
+              document.getElementById("traderForm").reset()
+              response.style.color = "green";
+              response.style.margin = "10px 0";
+              response.textContent = "Successfully added instructions";
+              setTimeout(()=>{response.textContent=""},2000)
+              // typeWriter()
+            }else{
+              loader.style.display = "none";
+              response.style.color = "red";
+              response.textContent = "You have no active of sub-scriptions";
+            }
+
+          } catch (error) {
+            loader.style.display = "none";
+            console.log(error);
+
+              response.style.color = "red";
+              response.textContent = "Some error happened please try again.";
+
+          }
+        }
+
+    async function submitionBuyer(){
+          event.preventDefault(); // Prevents the default form submission
+          loader.style.display = "block";
+
+          // Get values from the form
+          // const username = document.getElementById("username");
+          // const email = document.getElementById("email");
+
+          const interested_product = document.getElementById("interested_product"); 
+          const interested_country = document.getElementById("interested_country");
+          
+      
+          // Construct the data to be sent
+          const formData = {
+            interested_product : interested_product.value,
+            interested_country : interested_country.value,
+          };
+
+          
+          var i = 0;
+          var speed = 20;
+          var responseFromApi = '';
+
+          function typeWriter() {
+            if (i < responseFromApi.length) {
+              document.getElementById("ans").innerHTML += responseFromApi.charAt(i);
+              i++;
+              setTimeout(typeWriter, speed);
+            }
+          }
+
+          // Send data to localhost:3000 (Replace with your actual endpoint)
+          try {
+
+            let userData = localStorage.getItem('userInfo')
+            userData = JSON.parse(userData);
+            const userDetails = await axios.get(
+              `${url}/user`,
+              {
+                headers: {
+                  'Authorization': 'Bearer ' + userData.token
+                } 
+              }
+            );
+
+            let p = userDetails.data
+            if(/*p.user.requests > 0*/true){
+                const res = await axios.post(
+                `https://productsearch-cf6q.onrender.com/product-search`,
                 formData,
               );
 
               document.getElementById("ans-container").hidden = false;
-              response.style.color = "green";
-              response.style.margin = "10px 0";
-              response.textContent = "Successfully signed up! Please check your inbox for further Instructions";
+              // response.style.color = "green";
+              // response.style.margin = "10px 0";
+              // response.textContent = "Successfully signed up! Please check your inbox for further Instructions";
               loader.style.display = "none";
               // Handle the response from the server if needed
               // window.location.href = "https://headhuntrs.co.uk/signin.html";
@@ -1660,7 +1772,12 @@
 
               document.getElementById("container").hidden = true
               // document.getElementById("ans").innerHTML = res.data.meal_plan.trim()
-              responseFromApi = res.data.meal_plan;
+              responseFromApi = res.data.response;
+              console.log(responseFromApi);
+              document.getElementById("traderForm").reset()
+              response.style.color = "green";
+              response.style.margin = "10px 0";
+              response.textContent = "Successfully added instructions";
               typeWriter()
             }else{
               loader.style.display = "none";
@@ -1672,11 +1789,12 @@
             loader.style.display = "none";
             console.log(error);
 
-              response.style.color = "red";
-              response.textContent = "Some error happened please try again.";
+            response.style.color = "red";
+            response.textContent = "Some error happened please try again.";
 
           }
-        });
+        }
+
     </script>
   </body>
 </html>
