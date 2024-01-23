@@ -95,7 +95,7 @@ export const success = async (req, res) => {
 
     //redirecting the user to the dashboard
     setTimeout(() => {
-      res.redirect(303, `https://mealfixer-scao.onrender.com/success.html`);
+      res.redirect(303, `https://african-trade.onrender.com/success.html`);
     }, 3000);
   } catch (error) {
     console.error(error);
@@ -105,5 +105,5 @@ export const success = async (req, res) => {
 
 export const cancel = async (req, res) => {
   //redirect to the dashboard
-  res.redirect(303, `https://mealfixer-scao.onrender.com/failure.html`);
+  res.redirect(303, `https://african-trade.onrender.com/failure.html`);
 };
