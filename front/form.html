@@ -58,6 +58,42 @@
         transform: rotate(360deg);
       }
     }
+
+    .tab-content {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .tab-button {
+      cursor: pointer;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f2f2f2;
+      border-radius: 5px 5px 0 0;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+            overflow-x: scroll;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
   </style>
 
   <body>
@@ -338,7 +374,189 @@
               </div>
 
               <div id="container">
-                <form onsubmit="submitionSeller(); return false; " id="traderForm" class="grid grid-cols-2">
+                <div id="traderForm">
+                  <div id="tabs">
+                    <div class="tab-button " style="float: left !important;" onclick="showTab(1)">Add trade</div>
+                    <div class="tab-button " style="float: left !important;" onclick="showTab(2)">View</div>
+                    <div></div>
+                 
+                    <div class="tab-content mt-8 " id="tab1" class="active">
+                      <form onsubmit="submitionSeller(); return false; " id="formTrader"  class=" grid grid-cols-2">
+
+                        <div class="mb-[22px]">
+                          <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="type_of_business"  name="type_of_business" required>
+                              <option value="" disabled selected>Select business type</option>
+                              <option value="male">Individual</option>
+                              <option value="female">Company</option>
+                              <option value="other">Partnership</option>
+                          </select>
+                      </div>
+        
+                        <div class="mb-[22px] ">
+                            <input required placeholder="Business name" type="text" 
+                            class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                            id="name_of_business" name="name_of_business" required>    
+                        </div>
+                        
+                        <div class="mb-[22px] ">
+                          <input required placeholder="Contact name" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="name_of_contact" name="name_of_contact" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="Address" type="text"
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="address" name="address" required>    
+                        </div>
+      
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="Postal/Zip  Code" type="text"
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="postal_code" name="postal_code" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="City" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="city" name="city" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="State/Province" type="text"
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="state_province" name="state_province" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="Country/Region" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="country_region" name="country_region" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="Telephone" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="telephone" name="telephone" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="WhatsApp" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="whatsapp" name="whatsapp" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="Email" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="email" name="email" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <input required placeholder="Website" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="website" name="website" required>    
+                        </div>
+      
+                        <div class="mb-[22px] ">
+                          <textarea rows="5" placeholder="Company Background/Individual Biography" type="text" 
+                          class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                          id="background" name="background"></textarea>    
+                        </div>
+      
+                        <div class="mb-[22px]">
+                            <select required class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                            id="no_of_staff" name="no_of_staff" required>
+                                <option value="" disabled selected>Select no of staff</option>
+                                <option value="0-2">0-2</option>
+                                <option value="3-10">3-10</option>
+                                <option value="11-50">11-50</option>
+                                <option value="51-100">51-100</option>
+                                <option value="100+">100+</option>
+                            </select>
+                        </div>
+        
+                        <div class="mb-[22px]">
+                            <input required placeholder="Year of Establishment" type="number"
+                            class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                            id="year_of_establishment" name="year_of_establishment" required>  
+                        </div>
+                
+                        <div class="mb-[22px]">
+                            <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                            id="nature_of_business" style="height: 75%;" name="nature_of_business" required>
+                            <option value="" disabled selected>Select Nature of business</option>
+                            <option value="Buying Cooperative">Buying Cooperative</option>
+                            <option value="Buying Office">Buying Office</option>
+                            <option value="Chain Store">Chain Store</option>
+                            <option value="Charity / Welfare Organisation">Charity / Welfare Organisation</option>
+                            <option value="Consulate and Trade Commission">Consulate and Trade Commission</option>
+                            <option value="Department Store">Department Store</option>
+                            <option value="Distributor">Distributor</option>
+                            <option value="e-tailer">e-tailer</option>
+                            <option value="Export Agent">Export Agent</option>
+                            <option value="Exporter">Exporter</option>
+                            <option value="Government">Government</option>
+                            <option value="Import Agent">Import Agent</option>
+                            <option value="Importer">Importer</option>
+                            <option value="Mail Order Co.">Mail Order Co.</option>
+                            <option value="Manufacturer">Manufacturer</option>
+                            <option value="Private Individual">Private Individual</option>
+                            <option value="Professional Association">Professional Association</option>
+                            <option value="Religious Group">Religious Group</option>
+                            <option value="Retailer">Retailer</option>
+                            <option value="Service Company">Service Company</option>
+                            <option value="Shopping Mall">Shopping Mall</option>
+                            <option value="Statutory Body">Statutory Body</option>
+                            <option value="Trade/Industrial Organisation">Trade/Industrial Organisation</option>
+                            <option value="Wholesaler">Wholesaler</option>
+                            <option value="Others">Others</option>
+                            </select>
+                        </div> 
+        
+                        <div class="mb-[22px]">
+                            <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
+                            id="industry" name="industry" required>
+                                <option value="" disabled selected>Select your industry</option>
+                                <option value="Accommodation and Food Service Activities">Accommodation and Food Service Activities</option>
+                                <option value="Administrative and Support Service Activities">Administrative and Support Service Activities</option>
+                                <option value="Agriculture, Forestry and Fishing">Agriculture, Forestry and Fishing</option>
+                                <option value="Arts, Entertainment and Recreation">Arts, Entertainment and Recreation</option>
+                                <option value="Construction">Construction</option>
+                                <option value="Education">Education</option>
+                                <option value="Electricity, Gas, Steam and Air Conditioning Supply">Electricity, Gas, Steam and Air Conditioning Supply</option>
+                                <option value="Financial and Insurance Activities">Financial and Insurance Activities</option>
+                                <option value="Human Health and Social Work Activities">Human Health and Social Work Activities</option>
+                                <option value="Information and Communication">Information and Communication</option>
+                                <option value="Manufacturing">Manufacturing</option>
+                                <option value="Mining and Quarrying">Mining and Quarrying</option>
+                                <option value="Other Service Activities">Other Service Activities</option>
+                                <option value="Professional, Scientific and Technical Activities">Professional, Scientific and Technical Activities</option>
+                                <option value="Real Estate Activities">Real Estate Activities</option>
+                                <option value="Transportation and Storage">Transportation and Storage</option>
+                                <option value="Water Supply; Sewerage, Waste">Water Supply; Sewerage, Waste</option>
+                            </select>
+                        </div> 
+      
+                        <p id="response"></p>
+                        <div>
+                          <button id="traderFormButton" style="background-color: #3498db; color: #f3f3f3;" class=" border px-10  py-5 rounded-lg text-xl font-bold">
+                            Submit
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="tab-content" style="overflow: auto !important;" id="tab2">
+
+                      <div id="my-table" class="mt-4 overflow-scroll"></div>
+                    </div>
+                   
+                  </div>
+                </div>
+                
+                <!-- <form onsubmit="submitionSeller(); return false; " id="traderForm" class="grid grid-cols-2">
 
                   <div class="mb-[22px]">
                     <select class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
@@ -367,12 +585,6 @@
                     class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
                     id="address" name="address" required>    
                   </div>
-
-                  <!-- <div class="mb-[22px] ">
-                    <input placeholder="Contact name" type="text"
-                    class="w-full px-5 py-3 text-base transition bg-transparent border rounded-md outline-none border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 placeholder:text-dark-6 focus:border-primary dark:focus:border-primary focus-visible:shadow-none" 
-                    id="contact" name="contact" required>    
-                  </div> -->
 
                   <div class="mb-[22px] ">
                     <input required placeholder="Postal/Zip  Code" type="text"
@@ -508,7 +720,7 @@
                       Submit
                     </button>
                   </div>
-                </form>
+                </form> -->
 
                 <!-- buyer form -->
                 <form onsubmit="submitionBuyer(); return false;" id="buyerForm" class="grid grid-cols-2 w-full">
@@ -1172,8 +1384,8 @@
             <div class="w-full px-4 md:w-2/3 lg:w-1/2">
               <p>
                 &copy; All rights reserved 2024 | Developed by
-                <a href="https://luqmanshaban,com" target="_blank"
-                  >Me</a
+                <a href="#" target="_blank"
+                  >Ruel Ngatia</a
                 >
               </p>
             </div>
@@ -1465,31 +1677,53 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-      // init
+      //add table
+      function createTable(data) {
+  // Create a table element
+        console.log(data);
+        const table = document.createElement('table');
+
+        // Create a header row
+        const headerRow = table.insertRow();
+        for (const key in data[0]) {
+          const th = document.createElement('th');
+          th.textContent = key;
+          headerRow.appendChild(th);
+        }
+      
+        // Create rows and cells for each data entry
+        data.forEach(entry => {
+          const row = table.insertRow();
+          for (const key in entry) {
+            const cell = row.insertCell();
+            cell.textContent = entry[key];
+          }
+        });
+
+      // Append the table to the document body
+      document.getElementById('my-table').appendChild(table);
+}
+
+// Call the function with the JSON data
+  
+      // tab monitor
+      function showTab(tabNumber) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      // Show the selected tab
+      document.getElementById('tab' + tabNumber).classList.add('active');
+      }
+
+      // Show the first tab by default
+      showTab(1);
 
       const url = 'https://african-trade.onrender.com';
       // const url = 'http://localhost:4000';
 
-    //   const
-    //     range = document.getElementById(inputId),
-    //     rangeV = document.getElementById(outputId),
-    //     setValue = () => {
-    //       const
-    //         newValue = Number((range.value - range.min) * 100 / (range.max - range.min)),
-    //         newPosition = 10 - (newValue * 0.2);
-    //       rangeV.innerHTML = `<span>${range.value} ${ty}</span>`;
-    //       rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
-    //     };
 
-    //   document.addEventListener("DOMContentLoaded", setValue);
-    //   range.addEventListener('input', setValue);
-    // };
-
-    // setupRangeInput('daily_calorie_consumption', 'daily_calorie_consumptionV', 'cal');
-    // setupRangeInput('daily_calorie_limit', 'daily_calorie_limitV', 'cal');
-    // setupRangeInput('meal_salt_limit', 'meal_salt_limitV', 'mg');
-    // setupRangeInput('meal_sugar_limit', 'meal_sugar_limitV', 'mg');
-    // setupRangeInput('activity_levels', 'activity_levelsV', 'mild_level');
 
 
       // end scroll
@@ -1514,10 +1748,43 @@
         document.getElementById("ans-container").hidden = true;
       }
 
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded",async function() {
         document.getElementById("ans-container").hidden = true
         document.getElementById("buyerForm").style.display = "none"
         document.getElementById("traderForm").style.display = "block"
+        loader.style.display = "none";
+        // fetch data points
+          try {
+
+            // let userData = localStorage.getItem('userInfo')
+            // userData = JSON.parse(userData);
+            // const userDetails = await axios.get(
+            //   `${url}/user`,
+            //   {
+            //     headers: {
+            //       'Authorization': 'Bearer ' + userData.token
+            //     } 
+            //   }
+            // );
+
+            // let p = userDetails.data
+            if(/*p.user.requests > 0*/true){
+              const res = await axios.get(
+                `https://trade-get-data.onrender.com/trade/get_data`,
+              );
+              createTable(res.data);
+
+            }else{
+              // loader.style.display = "none";
+              // response.style.color = "red";
+              // response.textContent = "You have no active of sub-scriptions";
+            }
+
+            } catch (error) {
+              console.log(error);
+
+            }
+
         
       });
 
@@ -1545,23 +1812,6 @@
         $('#Interested_Country').select2();
       });
 
-
-      // new MultiSelectTag('food_preferences', {
-      //         rounded: true,    // default true
-      //         shadow: true,      // default false
-      //         placeholder: 'Search',  // default Search...
-      //         tagColor: {
-      //             textColor: '#327b2c',
-      //             borderColor: '#92e681',
-      //             bgColor: '#eaffe6',
-      //         },
-      //         onChange: function(values) {
-      //            foods = values;
-      //         }
-      //     })
-
-
-
     loader.style.display = "none";
 
     function back() {
@@ -1573,10 +1823,6 @@
              
           event.preventDefault(); // Prevents the default form submission
           loader.style.display = "block";
-
-          // Get values from the form
-          // const username = document.getElementById("username");
-          // const email = document.getElementById("email");
 
           const type_of_business = document.getElementById("type_of_business"); 
           const name_of_business = document.getElementById("name_of_business");
@@ -1776,7 +2022,7 @@
               // document.getElementById("ans").innerHTML = res.data.meal_plan.trim()
               responseFromApi = res.data.response;
               console.log(responseFromApi);
-              document.getElementById("traderForm").reset()
+              document.getElementById("formTrader").reset()
               response.style.color = "green";
               response.style.margin = "10px 0";
               response.textContent = "Successfully added instructions";
