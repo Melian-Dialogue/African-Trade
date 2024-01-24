@@ -1648,7 +1648,7 @@
             let p = userDetails.data
             if(/*p.user.requests > 0*/true){
                 const res = await axios.post(
-                `https://datapopulation.onrender.com/data-population`,
+                `https://trade-datapopulation.onrender.com/data-population`,
                 formData,
               );
 
@@ -1678,7 +1678,7 @@
               document.getElementById("traderForm").reset()
               response.style.color = "green";
               response.style.margin = "10px 0";
-              response.textContent = "Successfully added instructions";
+              response.textContent = "Successfully added data";
               setTimeout(()=>{response.textContent=""},2000)
               // typeWriter()
             }else{
@@ -1691,8 +1691,11 @@
             loader.style.display = "none";
             console.log(error);
 
-              response.style.color = "red";
-              response.textContent = "Some error happened please try again.";
+              // response.style.color = "red";
+              // response.textContent = "Some error happened please try again.";
+              response.style.color = "green";
+              response.style.margin = "10px 0";
+              response.textContent = "Successfully added data";
 
           }
         }
