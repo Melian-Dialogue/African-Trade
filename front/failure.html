@@ -181,7 +181,8 @@ animation: 3s ease-in-out 0 1 fadeInUp;
           document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             // Replace 'new-page.html' with the actual URL you want to redirect to
-            window.location.href = `https://african-trade.onrender.com/form.html`;
+            let current = window.location.host
+            window.location.href = `${current}/form.html`;
         }, 2000); // 2000 milliseconds = 2 seconds
     });
     </script>
