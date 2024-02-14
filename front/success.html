@@ -37,10 +37,10 @@
       }
     </style>
     <script>
+      let current = window.location.origin
           document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             // Replace 'new-page.html' with the actual URL you want to redirect to
-            let current = window.location.host
             window.location.href = `${current}/form.html`;
         }, 2000); // 2000 milliseconds = 2 seconds
     });
