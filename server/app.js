@@ -9,12 +9,12 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: ['*', 'https://mealfixer.onrender.com', 'http://localhost:4000','https://africantrade.events']
+    origin: ['*', 'http://localhost:4001','https://africantrade.events']
 }))
-app.use(express.static('../front'));
+// app.use(express.static('../front'));
 app.use(userRouter)
 app.use(paymentRouter)
 
 connectToDB()
 
-app.listen(4000, () => console.log('server listening on http://localhost:4000'))
+app.listen(4001, () => console.log('server listening on http://localhost:4001'))
