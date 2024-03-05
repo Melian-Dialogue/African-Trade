@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors({
     origin: ['*', 'http://localhost:4001','http://92.205.21.181:4001','https://africantrade.events']
 }))
-// app.use(express.static('../front'));
+app.use(express.static('../front'));
 app.use(userRouter)
 app.use(paymentRouter)
 
