@@ -1742,7 +1742,7 @@
             // let p = userDetails.data
             if(/*p.user.requests > 0*/true){
               const res = await axios.get(
-                `http://92.205.21.181:3003/get_data`,
+                `https://africantrade-backend.onrender.com/get_data`,
               );
               createTable(res.data);
 
@@ -1866,7 +1866,7 @@
             let p = userDetails.data
             if(/*p.user.requests > 0*/true){
                 const res = await axios.post(
-                `http://92.205.21.181:3003/data-population`,
+                `https://africantrade-backend.onrender.com/data-population`,
                 formData,
               );
 
@@ -1966,7 +1966,7 @@
             let p = userDetails.data
             if(/*p.user.requests > 0*/true){
                 const res = await axios.post(
-                `http://92.205.21.181:3003/product-search`,
+                `https://africantrade-backend.onrender.com/product-search`,
                 formData,
               );
 
